@@ -1,0 +1,27 @@
+// TODO Check how we can implement LESS classes that extend Office UI Fabric Core classes.
+// -Steven Volckaert. June 7, 2018.
+
+#app-root,
+#angular-root {
+  border: 1px solid lightgray;
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
+#app-footer {
+  margin-bottom: 16px;
+
+  & > div {
+    margin: 12px 0;
+  }
+}
+
+form.singleLineForm {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  .ms-TextField {
+    flex: 1 0;
+  }
+}

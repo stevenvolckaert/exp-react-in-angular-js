@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Use React components in AngularJS</title>
+  <script src="./angular.ts"></script>
+  <!--
+    TODO Fall back to NPM package if CDN is not available (e.g. when running on-premises).
+    -Steven Volckaert. June 7, 2018.
+  -->
+  <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.0/css/fabric.min.css">
+</head>
+
+<body class="ms-Fabric" dir="ltr">
+  <div class="ms-Grid">
+    <div class="ms-Grid-row">
+      <h1 class="ms-textAlignCenter">Use ReactJS components in AngularJS</h1>
+    </div>
+    <div class="ms-Grid-row">
+      <div class="ms-Grid-col ms-sm6">
+        <div id="app-root">Loading React app...</div>
+      </div>
+      <div class="ms-Grid-col ms-sm6">
+        <div id="angular-root" ng-app="app" class="ms-borderColor-themePrimary">
+          <div ng-controller="mainController">
+            <h1>AngularJS {{angularVersion}}</h1>
+            <div ng-show="isAppLoading">
+              Loading AngularJS app...
+            </div>
+            <div ng-cloak ng-hide="isAppLoading">
+              <h2>HelloComponent (2x)</h2>
+              <div ng-controller="helloController">
+                <p class="ms-bgColor-neutralLight" style="padding: 16px;">
+                  <code>person: { firstName: '{{person.firstName}}', lastName: '{{person.lastName}}' }</code>
+                </p>
+                <react-component name="HelloComponent" props="person" watch-depth="value"></react-component>
+                <p class="ms-bgColor-neutralLight" style="padding: 16px;">
+                  <code>person_2: { firstName: '{{person_2.firstName}}', lastName: '{{person_2.lastName}}' }</code>
+                </p>
+                <react-component name="HelloComponent" props="person_2" watch-depth="value"></react-component>
+              </div>
+              <h2>TestComponent</h2>
+              <div>
+                <react-component name="TestComponent" props="{ fooBar: '1234', baz: 'qux'}"></react-component>
+              </div>
+              <!-- <h2>HiComponent
+                <em class="ms-font-s">(AngularJS only)</em>
+              </h2>
+              <table>
+                <tr>
+                  <td>First name</td>
+                  <td>
+                    <input type="text" ng-model="firstName">
+                  </td>
+                  <td rowspan="0">
+                    Hi {{firstName + " " + lastName}}!
+                  </td>
+                </tr>
+                <tr>
+                  <td>Last name</td>
+                  <td>
+                    <input type="text" ng-model="lastName">
+                  </td>
+                </tr>
+              </table> -->
+              <react-component name="GitHubUserList"></react-component>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div id="app-footer" class="ms-Grid-row">
+      <h1>About</h1>
+      <div>
+        <em>
+          This project uses
+          <a href="https://parceljs.org">ParcelJS</a> |
+          <a href="https://parceljs.org/getting_started.html">Docs</a>
+        </em>
+      </div>
+      <div>
+        To do's:
+        <ul>
+          <li>
+            <a href="https://codeburst.io/how-to-hook-reactjs-to-your-existing-angularjs-1-x-app-5ab1ac59c0c1">How to hook reactJS to your existing AngularJS 1.x app</a>
+          </li>
+          <li>
+            <a href="https://github.com/adhrinae/ts-react-parcel">Typescript + React + Parcel boilerplate project, curated by the ParcelJS team</a>
+          </li>
+          <li>
+            <a href="http://jsfiddle.net/kLtzm93x/">A nice busy indicator using CSS only</a>
+          </li>
+          <li>
+            <a href="https://codeburst.io/when-to-use-component-or-purecomponent-a60cfad01a81">Learn the difference between PureComponent and Component</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script src="./index.tsx"></script>
+</body>
+
+</html>
